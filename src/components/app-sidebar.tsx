@@ -9,9 +9,13 @@ import {
     Frame,
     GalleryVerticalEnd,
     Map,
+    MonitorSmartphone,
     PieChart,
+    ScanEye,
     Settings2,
+    SquareActivity,
     SquareTerminal,
+    TriangleAlert,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -52,63 +56,55 @@ const data = {
     ],
     navMain: [
         {
-            title: "Playground",
+            title: "Monitoring",
             url: "#",
-            icon: SquareTerminal,
+            icon: SquareActivity,
             isActive: true,
             items: [
                 {
-                    title: "History",
+                    title: "Overview",
+                    url: "/monitoring/overview",
+                },
+                {
+                    title: "Availability",
+                    url: "/monitoring/availability",
+                },
+                {
+                    title: "Metrics",
+                    url: "/monitoring/metrics",
+                },
+            ],
+        },
+        {
+            title: "Devices",
+            url: "#",
+            icon: MonitorSmartphone,
+            items: [
+                {
+                    title: "Host",
                     url: "#",
                 },
                 {
-                    title: "Starred",
+                    title: "Proxy",
                     url: "#",
                 },
                 {
-                    title: "Settings",
+                    title: "Agent",
                     url: "#",
                 },
             ],
         },
         {
-            title: "Models",
+            title: "Alerts",
             url: "#",
-            icon: Bot,
+            icon: TriangleAlert,
             items: [
                 {
-                    title: "Genesis",
+                    title: "Criticals",
                     url: "#",
                 },
                 {
-                    title: "Explorer",
-                    url: "#",
-                },
-                {
-                    title: "Quantum",
-                    url: "#",
-                },
-            ],
-        },
-        {
-            title: "Documentation",
-            url: "#",
-            icon: BookOpen,
-            items: [
-                {
-                    title: "Introduction",
-                    url: "#",
-                },
-                {
-                    title: "Get Started",
-                    url: "#",
-                },
-                {
-                    title: "Tutorials",
-                    url: "#",
-                },
-                {
-                    title: "Changelog",
+                    title: "Logs",
                     url: "#",
                 },
             ],
