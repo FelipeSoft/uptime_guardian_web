@@ -18,24 +18,13 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart"
 
-const chartData = [{ month: "january", desktop: 1260, mobile: 570 }]
-const chartConfig = {
-    desktop: {
-        label: "Desktop",
-        color: "hsl(var(--chart-1))",
-    },
-    mobile: {
-        label: "Mobile",
-        color: "hsl(var(--chart-2))",
-    },
-} satisfies ChartConfig
-
 type Props = {
     title: string;
     chartConfig: ChartConfig;
+    chartData: any;
 }
 
-export function RadialChartComponent({ title, chartConfig }: Props) {
+export function RadialChartComponent({ title, chartConfig, chartData }: Props) {
     const totalVisitors = chartData[0].desktop + chartData[0].mobile
 
     return (

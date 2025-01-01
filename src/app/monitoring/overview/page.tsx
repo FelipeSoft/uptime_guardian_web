@@ -51,6 +51,7 @@ export default function Page() {
                         </div>
                         <div className="border flex flex-col justify-between gap-4 p-4 rounded-xl bg-muted/50">
                             <RadialChartComponent
+                                chartData={[{ month: "january", desktop: 1260, mobile: 570 }]}
                                 chartConfig={
                                     {
                                         desktop: {
