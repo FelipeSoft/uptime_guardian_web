@@ -68,7 +68,22 @@ export default function Page() {
                             />
                         </div>
                         <div className="border flex flex-col gap-4 p-4 rounded-xl bg-muted/50">
-                            ...
+                        <RadialChartComponent
+                                chartData={[{ month: "january", desktop: 1260, mobile: 570 }]}
+                                chartConfig={
+                                    {
+                                        desktop: {
+                                            label: "Desktop",
+                                            color: "hsl(var(--chart-1))",
+                                        },
+                                        mobile: {
+                                            label: "Mobile",
+                                            color: "hsl(var(--chart-2))",
+                                        },
+                                    }
+                                }
+                                title="Availability Rate"
+                            />
                         </div>
                     </div>
                     <div className="border flex flex-col gap-4 p-4 rounded-xl bg-muted/50">
