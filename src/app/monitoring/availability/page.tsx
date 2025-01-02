@@ -8,6 +8,7 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
     Select,
     SelectContent,
@@ -24,6 +25,9 @@ import {
 import { useState } from "react"
 
 export default function Page() {
+    const [networks, setNetworks] = useState([
+        { id: 1, name: "Network 1" }
+    ]);
     const [hosts, setHosts] = useState([
         { id: 1, network: 1, hostname: "HOSTNAME1", ipv4: "192.168.0.1", reachable: true },
         { id: 2, network: 1, hostname: "HOSTNAME2", ipv4: "192.168.0.2", reachable: true },
@@ -60,40 +64,54 @@ export default function Page() {
                 </header>
                 <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
                     <div className="border flex flex-col gap-4 p-4 rounded-xl bg-muted/50">
-                        <div>
-                            <Select>
-                                <SelectTrigger className="w-[180px]">
-                                    <SelectValue placeholder="Choose Network" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="1">Network 1</SelectItem>
-                                    <SelectItem value="2">Network 2</SelectItem>
-                                    <SelectItem value="3">Network 3</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
-                        <h1>Selected: Network 1</h1>
-                        <nav className="grid grid-cols-5 gap-1">
-                            {hosts.map((host) => {
-                                return (
-                                    <button key={host.id} className={`flex items-end p-2 ${host.reachable ? "bg-emerald-600" : "bg-red-600"} text-white h-32 w-full rounded-xl`}>
-                                        {`HOSTNAME${host.id}`}
-                                    </button>
-                                )
-                            })}
-                        </nav>
+                        <Card className="flex flex-col">
+                            <CardHeader className="pb-4">
+                                <CardTitle className="">Hosts Availability per Network</CardTitle>
+                            </CardHeader>
+                            <CardContent className="w-full">
+                                <div className="pb-4">
+                                    <Select defaultValue="1">
+                                        <SelectTrigger className="w-[180px]">
+                                            <SelectValue placeholder="Choose Network" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {networks.map((network) => {
+                                                return (
+                                                    <SelectItem value={network.id.toString()}>{network.name}</SelectItem>
+                                                )
+                                            })}
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <nav className="grid grid-cols-5 gap-1">
+                                    {hosts.map((host) => {
+                                        return (
+                                            <button key={host.id} className={`flex items-end p-2 ${host.reachable ? "bg-emerald-600 hover:bg-emerald-600/80" : "bg-red-600 hover:bg-red-600/80"} text-white h-32 w-full rounded-xl`}>
+                                                {`HOSTNAME${host.id}`}
+                                            </button>
+                                        )
+                                    })}
+                                </nav>
+                            </CardContent>
+                        </Card>
                     </div>
                     <div className="border flex flex-col gap-4 p-4 rounded-xl bg-muted/50">
-                        <h1>Available Agents</h1>
-                        <nav className="grid grid-cols-10 gap-1">
-                            {hosts.map((host) => {
-                                return (
-                                    <button key={host.id} className={`flex items-end p-2 ${host.reachable ? "bg-emerald-600" : "bg-red-600"} text-white h-32 w-full rounded-xl`}>
-                                        {`AGENT${host.id}`}
-                                    </button>
-                                )
-                            })}
-                        </nav>
+                        <Card className="flex flex-col">
+                            <CardHeader className="pb-4">
+                                <CardTitle className="">Proxies Availability</CardTitle>
+                            </CardHeader>
+                            <CardContent className="w-full">
+                                <nav className="grid grid-cols-5 gap-1">
+                                    {hosts.map((host) => {
+                                        return (
+                                            <button key={host.id} className={`flex items-end p-2 ${host.reachable ? "bg-emerald-600 hover:bg-emerald-600/80" : "bg-red-600 hover:bg-red-600/80"} text-white h-32 w-full rounded-xl`}>
+                                                {`PROXY${host.id}`}
+                                            </button>
+                                        )
+                                    })}
+                                </nav>
+                            </CardContent>
+                        </Card>
                     </div>
                 </div>
             </SidebarInset>
